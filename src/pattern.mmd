@@ -1,0 +1,16 @@
+graph TD
+  A[CI/CD pipeline]
+  %%subgraph Production cluster
+  B[Deployment]
+  C[DORA Metrics controller]
+  D[Prometheus]
+  E[Grafana]
+  %%end
+  Z(( ))
+
+  Z --> A
+  A --deploys and labels--> B
+  C --monitors update stream-->B
+  C --control loop-->C
+  D --scrapes metrics-->C
+  E --displays time series data-->D

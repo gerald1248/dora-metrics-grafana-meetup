@@ -1,0 +1,15 @@
+%%{init:{"themeVariables":{"xyChart":{"backgroundColor":"transparent"}}}}%%
+
+---
+config:
+  xyChart:
+    width: 1000
+    height: 500
+---
+xychart-beta
+    %% title "Zero interest rate phenomena"
+    x-axis 2007 --> 2023
+    y-axis "Interest rate (%)" 0 --> 10
+    bar [5.02, 1.93, 0.16, 0.18, 0.1, 0.14, 0.11, 0.09, 0.13, 0.4, 1, 1.83, 2.16, 0.38, 0.08, 1.68, 5.02]
+    line [5.02, 1.93, 0.16, 0.18, 0.1, 0.14, 0.11, 0.09, 0.13, 0.4, 1, 1.83, 2.16, 0.38, 0.08, 1.68, 5.02]
+    %% data source: https://fred.stlouisfed.org/graph/?g=S76T

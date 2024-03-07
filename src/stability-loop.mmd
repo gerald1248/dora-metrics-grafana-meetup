@@ -1,0 +1,23 @@
+flowchart TD
+    A["Watch deployments"]
+    C{"Parse<br/>replica<br/>counts"}
+    D["Set downtime flag<br/>and start timer"]
+    DD{"Downtime<br/>flag set?"}
+    J["Increment counter<br/>dora_downtime_total"]
+    I{"Downtime<br/>flag set?"}
+    K["Clear downtime flag"]
+    L["Update gauge<br/>dora_time_to_recovery_seconds"]
+    Z(( ))
+
+    Z --> A
+    A --> C
+    C -->|desired > 0 and none ready| DD
+    DD -->|yes| A
+    DD -->|no| D
+    D --> J
+    J --> A
+    I -->|yes| K
+    I -->|no| A
+    C -->|desired == ready| I
+    K --> L
+    L --> A

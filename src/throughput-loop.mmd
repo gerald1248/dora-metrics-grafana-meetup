@@ -1,0 +1,18 @@
+flowchart TD
+  A["Watch deployments with label<br/>dora-controller/enabled: 'true'"]
+  B{"Labels<br/>stale?"}
+  C{"Parse<br/>labels"}
+  D["Update gauge<br/>dora_cycle_time_seconds"]
+  E["Increment counter<br/>dora_successful_deployments_total"]
+  F["Increment counter<br/>dora_failed_deployments_total"]
+  Z(( ))
+
+  Z --> A
+  A --> B
+  B -->|Yes|A
+  B -->|No|C
+  C -->|dora-controller/success is 'true'| D
+  C -->|dora-controller/success is 'false'| F
+  D --> E
+  E --> A
+  F --> A
